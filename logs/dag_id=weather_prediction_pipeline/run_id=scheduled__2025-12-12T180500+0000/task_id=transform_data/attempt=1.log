@@ -1,0 +1,26 @@
+[2025-12-13T20:55:57.208+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-13T20:55:57.256+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline.transform_data scheduled__2025-12-12T18:05:00+00:00 [queued]>
+[2025-12-13T20:55:57.272+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline.transform_data scheduled__2025-12-12T18:05:00+00:00 [queued]>
+[2025-12-13T20:55:57.273+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-13T20:55:57.298+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): transform_data> on 2025-12-12 18:05:00+00:00
+[2025-12-13T20:55:57.309+0000] {standard_task_runner.py:72} INFO - Started process 564 to run task
+[2025-12-13T20:55:57.316+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline', 'transform_data', 'scheduled__2025-12-12T18:05:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/aiii_model/test_etl.py', '--cfg-path', '/tmp/tmpfz_cac0a']
+[2025-12-13T20:55:57.324+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask transform_data
+[2025-12-13T20:55:57.374+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-13T20:55:57.479+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline.transform_data scheduled__2025-12-12T18:05:00+00:00 [running]> on host 9fe23fda45c5
+[2025-12-13T20:55:57.482+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-13T20:55:57.696+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-12T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-12T18:05:00+00:00'
+[2025-12-13T20:55:57.702+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-13T20:55:57.762+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-13T20:55:57.765+0000] {logging_mixin.py:190} INFO -                     DAY 1: ENHANCED FEATURE ENGINEERING
+[2025-12-13T20:55:57.767+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-13T20:56:04.977+0000] {logging_mixin.py:190} INFO - 📊 Input shape: (2769059, 8)
+[2025-12-13T20:58:24.976+0000] {logging_mixin.py:190} INFO - ✅ Transformed shape: (2766812, 25)
+[2025-12-13T20:58:24.978+0000] {logging_mixin.py:190} INFO - 💾 Saved to: /opt/***/dags/aiii_model/transformed_data.csv
+[2025-12-13T20:58:24.980+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-13T20:58:25.112+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-13T20:58:25.139+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-13T20:58:25.141+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline, task_id=transform_data, run_id=scheduled__2025-12-12T18:05:00+00:00, execution_date=20251212T180500, start_date=20251213T205557, end_date=20251213T205825
+[2025-12-13T20:58:25.247+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-13T20:58:25.313+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-13T20:58:25.317+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

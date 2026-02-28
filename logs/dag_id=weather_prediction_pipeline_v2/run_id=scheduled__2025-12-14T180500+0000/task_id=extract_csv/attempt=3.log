@@ -1,0 +1,33 @@
+[2025-12-15T22:29:44.119+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T22:29:44.155+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.extract_csv scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T22:29:44.165+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.extract_csv scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T22:29:44.166+0000] {taskinstance.py:2865} INFO - Starting attempt 3 of 5
+[2025-12-15T22:29:44.179+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): extract_csv> on 2025-12-14 18:05:00+00:00
+[2025-12-15T22:29:44.187+0000] {standard_task_runner.py:72} INFO - Started process 904 to run task
+[2025-12-15T22:29:44.191+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'extract_csv', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmp710zj9sq']
+[2025-12-15T22:29:44.194+0000] {standard_task_runner.py:105} INFO - Job 7: Subtask extract_csv
+[2025-12-15T22:29:44.222+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:29:44.301+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.extract_csv scheduled__2025-12-14T18:05:00+00:00 [running]> on host 6f17979d182d
+[2025-12-15T22:29:44.304+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:29:44.412+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='extract_csv' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T22:29:44.414+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T22:29:44.435+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:29:44.436+0000] {logging_mixin.py:190} INFO -                     DAY 1: EXTRACTING & CLEANING DATA
+[2025-12-15T22:29:44.437+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:29:44.439+0000] {logging_mixin.py:190} INFO - 📂 Reading: /opt/***/dags/aiii_model/city_temperature.csv
+[2025-12-15T22:29:44.964+0000] {logging_mixin.py:190} INFO - 📊 Initial shape: (361614, 12)
+[2025-12-15T22:29:44.965+0000] {logging_mixin.py:190} INFO - 📋 Columns: ['Region', 'Country', 'State', 'City', 'Year', 'Month', 'Day', 'AvgTemperature', 'MinTemperature', 'MaxTemperature', 'Precipitation_mm', 'MaxWindSpeed_kmh']
+[2025-12-15T22:29:44.967+0000] {logging_mixin.py:190} INFO - 🧹 Cleaning temperature data...
+[2025-12-15T22:29:45.161+0000] {logging_mixin.py:190} INFO - 🧹 Cleaning outliers using IQR method...
+[2025-12-15T22:29:47.611+0000] {logging_mixin.py:190} INFO - ✅ Cleaning complete:
+[2025-12-15T22:29:47.612+0000] {logging_mixin.py:190} INFO -    ❌ Out of range: 0 (0.0%)
+[2025-12-15T22:29:47.613+0000] {logging_mixin.py:190} INFO -    ❌ Outliers: 0 (0.0%)
+[2025-12-15T22:29:47.614+0000] {logging_mixin.py:190} INFO -    ✅ Remaining: 361,614 (100.0%)
+[2025-12-15T22:29:47.615+0000] {logging_mixin.py:190} INFO - 💾 Saved to: /opt/***/dags/aiii_model/clean_data.csv
+[2025-12-15T22:29:47.616+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:29:47.629+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T22:29:47.647+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T22:29:47.649+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=extract_csv, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T222944, end_date=20251215T222947
+[2025-12-15T22:29:47.697+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T22:29:47.738+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T22:29:47.740+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

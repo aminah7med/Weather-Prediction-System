@@ -1,0 +1,24 @@
+[2025-12-13T20:55:06.380+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-13T20:55:06.437+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline.check_day_one scheduled__2025-12-12T18:05:00+00:00 [queued]>
+[2025-12-13T20:55:06.459+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline.check_day_one scheduled__2025-12-12T18:05:00+00:00 [queued]>
+[2025-12-13T20:55:06.461+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-13T20:55:06.491+0000] {taskinstance.py:2888} INFO - Executing <Task(BranchPythonOperator): check_day_one> on 2025-12-12 18:05:00+00:00
+[2025-12-13T20:55:06.505+0000] {standard_task_runner.py:72} INFO - Started process 511 to run task
+[2025-12-13T20:55:06.514+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline', 'check_day_one', 'scheduled__2025-12-12T18:05:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/aiii_model/test_etl.py', '--cfg-path', '/tmp/tmpjjwtoxmn']
+[2025-12-13T20:55:06.527+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask check_day_one
+[2025-12-13T20:55:06.595+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-13T20:55:06.708+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline.check_day_one scheduled__2025-12-12T18:05:00+00:00 [running]> on host 9fe23fda45c5
+[2025-12-13T20:55:06.712+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-13T20:55:06.933+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline' AIRFLOW_CTX_TASK_ID='check_day_one' AIRFLOW_CTX_EXECUTION_DATE='2025-12-12T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-12T18:05:00+00:00'
+[2025-12-13T20:55:06.936+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-13T20:55:06.979+0000] {baseoperator.py:405} WARNING - BranchPythonOperator.execute cannot be called outside TaskInstance!
+[2025-12-13T20:55:07.008+0000] {logging_mixin.py:190} INFO - 🎯 Running DAY 1 - Initial Training
+[2025-12-13T20:55:07.010+0000] {python.py:240} INFO - Done. Returned value was: extract_csv
+[2025-12-13T20:55:07.011+0000] {branch.py:38} INFO - Branch into extract_csv
+[2025-12-13T20:55:07.013+0000] {skipmixin.py:230} INFO - Following branch ('extract_csv',)
+[2025-12-13T20:55:07.050+0000] {skipmixin.py:278} INFO - Skipping tasks [('skip_day1', -1)]
+[2025-12-13T20:55:07.155+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-13T20:55:07.157+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline, task_id=check_day_one, run_id=scheduled__2025-12-12T18:05:00+00:00, execution_date=20251212T180500, start_date=20251213T205506, end_date=20251213T205507
+[2025-12-13T20:55:07.213+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-13T20:55:07.309+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-13T20:55:07.312+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

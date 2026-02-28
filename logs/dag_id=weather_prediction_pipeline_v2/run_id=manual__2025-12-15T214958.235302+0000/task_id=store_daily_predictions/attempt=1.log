@@ -1,0 +1,103 @@
+[2025-12-15T21:50:16.075+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T21:50:16.102+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T21:49:58.235302+00:00 [queued]>
+[2025-12-15T21:50:16.116+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T21:49:58.235302+00:00 [queued]>
+[2025-12-15T21:50:16.118+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T21:50:16.133+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): store_daily_predictions> on 2025-12-15 21:49:58.235302+00:00
+[2025-12-15T21:50:16.141+0000] {standard_task_runner.py:72} INFO - Started process 22371 to run task
+[2025-12-15T21:50:16.147+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'store_daily_predictions', 'manual__2025-12-15T21:49:58.235302+00:00', '--job-id', '102', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpfyogyyvp']
+[2025-12-15T21:50:16.152+0000] {standard_task_runner.py:105} INFO - Job 102: Subtask store_daily_predictions
+[2025-12-15T21:50:16.182+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T21:50:16.252+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T21:49:58.235302+00:00 [running]> on host 89522446c9a4
+[2025-12-15T21:50:16.365+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='store_daily_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T21:49:58.235302+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T21:49:58.235302+00:00'
+[2025-12-15T21:50:16.366+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T21:50:16.389+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:50:16.391+0000] {logging_mixin.py:190} INFO -                     DAY 2: STORING PREDICTIONS (BULK MODE)
+[2025-12-15T21:50:16.392+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:50:16.415+0000] {logging_mixin.py:190} INFO - 💾 Storing 27 predictions using Bulk Insert...
+[2025-12-15T21:50:16.416+0000] {logging_mixin.py:190} INFO - 📅 Target date: 2025-12-16
+[2025-12-15T21:50:16.432+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-15T21:50:16.433+0000] {logging_mixin.py:190} INFO - 🔌 Connecting to database: postgres:5432
+[2025-12-15T21:50:16.434+0000] {logging_mixin.py:190} INFO -    Database: ***
+[2025-12-15T21:50:16.435+0000] {logging_mixin.py:190} INFO -    User: ***
+[2025-12-15T21:50:16.436+0000] {logging_mixin.py:190} INFO -    Timeout: 10 seconds
+[2025-12-15T21:50:16.437+0000] {logging_mixin.py:190} INFO - 🔌 Establishing connection...
+[2025-12-15T21:50:16.446+0000] {logging_mixin.py:190} INFO - ✅ Connection established!
+[2025-12-15T21:50:16.447+0000] {logging_mixin.py:190} INFO - ✅ Statement timeout set to 30s
+[2025-12-15T21:50:16.448+0000] {logging_mixin.py:190} INFO - 📋 Creating/verifying table structure...
+[2025-12-15T21:50:16.449+0000] {logging_mixin.py:190} INFO - ✅ Table structure verified
+[2025-12-15T21:50:16.450+0000] {logging_mixin.py:190} INFO - 🔧 Ensuring all columns exist...
+[2025-12-15T21:50:46.452+0000] {logging_mixin.py:190} INFO - ❌ Database connection error: canceling statement due to statement timeout
+[2025-12-15T21:50:46.453+0000] {logging_mixin.py:190} INFO -    Possible causes:
+[2025-12-15T21:50:46.455+0000] {logging_mixin.py:190} INFO -    - Database is down
+[2025-12-15T21:50:46.456+0000] {logging_mixin.py:190} INFO -    - Wrong credentials
+[2025-12-15T21:50:46.457+0000] {logging_mixin.py:190} INFO -    - Network issue
+[2025-12-15T21:50:46.458+0000] {logging_mixin.py:190} INFO -    - Connection timeout
+[2025-12-15T21:50:46.459+0000] {logging_mixin.py:190} INFO - 🔌 Connection closed
+[2025-12-15T21:50:46.461+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/test_etl.py", line 1990, in store_daily_predictions
+    cur.execute("""
+psycopg2.errors.QueryCanceled: canceling statement due to statement timeout
+
+[2025-12-15T21:50:46.492+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=weather_prediction_pipeline_v2, task_id=store_daily_predictions, run_id=manual__2025-12-15T21:49:58.235302+00:00, execution_date=20251215T214958, start_date=20251215T215016, end_date=20251215T215046
+[2025-12-15T21:50:46.516+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T21:50:46.517+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 102 for task store_daily_predictions (canceling statement due to statement timeout
+; 22371)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/test_etl.py", line 1990, in store_daily_predictions
+    cur.execute("""
+psycopg2.errors.QueryCanceled: canceling statement due to statement timeout
+
+[2025-12-15T21:50:46.540+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-12-15T21:50:46.567+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T21:50:46.570+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

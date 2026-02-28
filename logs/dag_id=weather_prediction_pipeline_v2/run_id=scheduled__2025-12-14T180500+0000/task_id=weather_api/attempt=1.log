@@ -1,0 +1,394 @@
+[2025-12-15T19:07:48.270+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T19:07:48.296+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T19:07:48.306+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T19:07:48.308+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T19:07:48.322+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T19:07:48.330+0000] {standard_task_runner.py:72} INFO - Started process 12518 to run task
+[2025-12-15T19:07:48.335+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpl2wtbs2b']
+[2025-12-15T19:07:48.338+0000] {standard_task_runner.py:105} INFO - Job 43: Subtask weather_api
+[2025-12-15T19:07:48.362+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T19:07:48.420+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 89522446c9a4
+[2025-12-15T19:07:48.423+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T19:07:48.539+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T19:07:48.542+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T19:07:48.564+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T19:07:48.565+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T19:07:48.566+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T19:07:48.766+0000] {logging_mixin.py:190} INFO - 📍 Cities: 27 | Workers: 10
+[2025-12-15T19:07:48.936+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 3.5°C
+[2025-12-15T19:07:48.936+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 13.5°C
+[2025-12-15T19:07:48.938+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 17.0°C
+[2025-12-15T19:07:48.940+0000] {logging_mixin.py:190} INFO - ✓ Adana: 10.0°C
+[2025-12-15T19:07:48.949+0000] {logging_mixin.py:190} INFO - ✓ Giza: 17.4°C
+[2025-12-15T19:07:48.958+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 17.4°C
+[2025-12-15T19:07:48.959+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.6°C
+[2025-12-15T19:07:49.066+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 3.8°C
+[2025-12-15T19:07:49.075+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 19.0°C
+[2025-12-15T19:07:49.078+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 7.3°C
+[2025-12-15T19:07:49.083+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 16.0°C
+[2025-12-15T19:07:49.084+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 9.6°C
+[2025-12-15T19:07:49.091+0000] {logging_mixin.py:190} INFO - ✓ Konya: 0.1°C
+[2025-12-15T19:07:49.096+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 10.4°C
+[2025-12-15T19:07:49.207+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 18.0°C
+[2025-12-15T19:07:49.211+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 4.1°C
+[2025-12-15T19:07:49.221+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 17.8°C
+[2025-12-15T19:07:49.227+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 20.1°C
+[2025-12-15T19:07:49.228+0000] {logging_mixin.py:190} INFO - ✓ Qom: 8.1°C
+[2025-12-15T19:07:49.232+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T19:07:49.239+0000] {logging_mixin.py:190} INFO - ✓ Suez: 15.8°C
+[2025-12-15T19:07:49.344+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 6.5°C
+[2025-12-15T19:07:49.346+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: 0.7°C
+[2025-12-15T19:07:49.366+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 15.1°C
+[2025-12-15T19:07:49.933+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 13.3°C
+[2025-12-15T19:07:49.936+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 19.6°C
+[2025-12-15T19:07:49.938+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 4.2°C
+[2025-12-15T19:07:49.941+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 27/27 (100.0%)
+[2025-12-15T19:07:49.943+0000] {logging_mixin.py:190} INFO - ❌ Failed: 0/27
+[2025-12-15T19:07:49.944+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T19:07:49.971+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T19:07:49.988+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T19:07:49.989+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T190748, end_date=20251215T190749
+[2025-12-15T19:07:50.035+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T19:07:50.078+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T19:07:50.081+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T20:27:10.262+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T20:27:10.297+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T20:27:10.309+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T20:27:10.310+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T20:27:10.328+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T20:27:10.340+0000] {standard_task_runner.py:72} INFO - Started process 17182 to run task
+[2025-12-15T20:27:10.347+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '75', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmppyoe3ncr']
+[2025-12-15T20:27:10.352+0000] {standard_task_runner.py:105} INFO - Job 75: Subtask weather_api
+[2025-12-15T20:27:10.401+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:27:10.498+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 89522446c9a4
+[2025-12-15T20:27:10.501+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:27:10.722+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T20:27:10.724+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T20:27:10.773+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:27:10.778+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T20:27:10.779+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:27:11.065+0000] {logging_mixin.py:190} INFO - 📍 Cities: 27 | Workers: 10
+[2025-12-15T20:27:11.469+0000] {logging_mixin.py:190} INFO - ✓ Adana: 10.0°C
+[2025-12-15T20:27:11.470+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 16.0°C
+[2025-12-15T20:27:11.486+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 16.4°C
+[2025-12-15T20:27:11.487+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 3.6°C
+[2025-12-15T20:27:11.488+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 3.5°C
+[2025-12-15T20:27:11.504+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 13.4°C
+[2025-12-15T20:27:11.505+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.0°C
+[2025-12-15T20:27:11.506+0000] {logging_mixin.py:190} INFO - ✓ Giza: 16.4°C
+[2025-12-15T20:27:11.508+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 17.6°C
+[2025-12-15T20:27:11.544+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 12.3°C
+[2025-12-15T20:27:11.922+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 2.8°C
+[2025-12-15T20:27:11.929+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 15.1°C
+[2025-12-15T20:27:11.930+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 5.1°C
+[2025-12-15T20:27:11.931+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 18.0°C
+[2025-12-15T20:27:11.939+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 9.6°C
+[2025-12-15T20:27:11.940+0000] {logging_mixin.py:190} INFO - ✓ Konya: 1.7°C
+[2025-12-15T20:27:11.941+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 9.8°C
+[2025-12-15T20:27:12.004+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 18.0°C
+[2025-12-15T20:27:12.005+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 3.1°C
+[2025-12-15T20:27:12.007+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 16.0°C
+[2025-12-15T20:27:12.315+0000] {logging_mixin.py:190} INFO - ✓ Qom: 7.7°C
+[2025-12-15T20:27:12.344+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 15.0°C
+[2025-12-15T20:27:12.355+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: -0.3°C
+[2025-12-15T20:27:12.357+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 6.5°C
+[2025-12-15T20:27:12.365+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T20:27:12.367+0000] {logging_mixin.py:190} INFO - ✓ Suez: 17.1°C
+[2025-12-15T20:27:12.372+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 19.1°C
+[2025-12-15T20:27:12.374+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 27/27 (100.0%)
+[2025-12-15T20:27:12.375+0000] {logging_mixin.py:190} INFO - ❌ Failed: 0/27
+[2025-12-15T20:27:12.376+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:27:12.403+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T20:27:12.423+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T20:27:12.425+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T202710, end_date=20251215T202712
+[2025-12-15T20:27:12.452+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T20:27:12.496+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T20:27:12.499+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T20:54:32.334+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T20:54:32.367+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T20:54:32.380+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T20:54:32.382+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T20:54:32.398+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T20:54:32.407+0000] {standard_task_runner.py:72} INFO - Started process 18928 to run task
+[2025-12-15T20:54:32.414+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '87', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpaf4i8n6m']
+[2025-12-15T20:54:32.420+0000] {standard_task_runner.py:105} INFO - Job 87: Subtask weather_api
+[2025-12-15T20:54:32.443+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:54:32.518+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 89522446c9a4
+[2025-12-15T20:54:32.520+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:54:32.655+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T20:54:32.657+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T20:54:32.680+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:54:32.681+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T20:54:32.682+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:54:32.929+0000] {logging_mixin.py:190} INFO - 📍 Cities: 27 | Workers: 10
+[2025-12-15T20:54:34.189+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 12.3°C
+[2025-12-15T20:54:34.189+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 16.4°C
+[2025-12-15T20:54:34.190+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 3.6°C
+[2025-12-15T20:54:34.190+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.0°C
+[2025-12-15T20:54:34.191+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 13.4°C
+[2025-12-15T20:54:34.202+0000] {logging_mixin.py:190} INFO - ✓ Adana: 9.0°C
+[2025-12-15T20:54:34.204+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 17.6°C
+[2025-12-15T20:54:34.205+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 16.0°C
+[2025-12-15T20:54:34.207+0000] {logging_mixin.py:190} INFO - ✓ Giza: 16.4°C
+[2025-12-15T20:54:34.213+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 1.5°C
+[2025-12-15T20:54:34.789+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 18.0°C
+[2025-12-15T20:54:34.790+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 13.7°C
+[2025-12-15T20:54:34.793+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 2.8°C
+[2025-12-15T20:54:34.799+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 5.1°C
+[2025-12-15T20:54:34.808+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 7.4°C
+[2025-12-15T20:54:34.809+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 9.8°C
+[2025-12-15T20:54:34.809+0000] {logging_mixin.py:190} INFO - ✓ Konya: 1.7°C
+[2025-12-15T20:54:34.833+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 18.0°C
+[2025-12-15T20:54:34.859+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 3.1°C
+[2025-12-15T20:54:34.899+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 16.0°C
+[2025-12-15T20:54:35.637+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 19.1°C
+[2025-12-15T20:54:35.673+0000] {logging_mixin.py:190} INFO - ✓ Qom: 7.6°C
+[2025-12-15T20:54:35.697+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T20:54:35.707+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: -0.3°C
+[2025-12-15T20:54:35.707+0000] {logging_mixin.py:190} INFO - ✓ Suez: 16.8°C
+[2025-12-15T20:54:35.714+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 14.1°C
+[2025-12-15T20:54:35.746+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 6.5°C
+[2025-12-15T20:54:35.749+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 27/27 (100.0%)
+[2025-12-15T20:54:35.750+0000] {logging_mixin.py:190} INFO - ❌ Failed: 0/27
+[2025-12-15T20:54:35.751+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:54:35.777+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T20:54:35.795+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T20:54:35.796+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T205432, end_date=20251215T205435
+[2025-12-15T20:54:35.839+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T20:54:35.874+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T20:54:35.877+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T21:06:27.111+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T21:06:27.150+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T21:06:27.165+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T21:06:27.167+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T21:06:27.184+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T21:06:27.195+0000] {standard_task_runner.py:72} INFO - Started process 19700 to run task
+[2025-12-15T21:06:27.201+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '92', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmp_ez9su9n']
+[2025-12-15T21:06:27.206+0000] {standard_task_runner.py:105} INFO - Job 92: Subtask weather_api
+[2025-12-15T21:06:27.239+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T21:06:27.308+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 89522446c9a4
+[2025-12-15T21:06:27.311+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T21:06:27.470+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T21:06:27.472+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T21:06:27.523+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:06:27.527+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T21:06:27.528+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:06:27.826+0000] {logging_mixin.py:190} INFO - 📍 Cities: 27 | Workers: 10
+[2025-12-15T21:06:31.372+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 16.0°C
+[2025-12-15T21:06:31.376+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 1.5°C
+[2025-12-15T21:06:31.386+0000] {logging_mixin.py:190} INFO - ✓ Giza: 16.4°C
+[2025-12-15T21:06:32.131+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 18.0°C
+[2025-12-15T21:06:32.143+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 2.8°C
+[2025-12-15T21:06:32.149+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 13.7°C
+[2025-12-15T21:06:32.316+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 17.6°C
+[2025-12-15T21:06:32.396+0000] {logging_mixin.py:190} INFO - ✓ Adana: 11.8°C
+[2025-12-15T21:06:32.415+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.0°C
+[2025-12-15T21:06:32.416+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 12.9°C
+[2025-12-15T21:06:32.417+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 11.3°C
+[2025-12-15T21:06:32.505+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 16.4°C
+[2025-12-15T21:06:32.511+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 3.6°C
+[2025-12-15T21:06:32.916+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 9.8°C
+[2025-12-15T21:06:32.917+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 5.1°C
+[2025-12-15T21:06:32.922+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 8.5°C
+[2025-12-15T21:06:32.937+0000] {logging_mixin.py:190} INFO - ✓ Konya: 0.7°C
+[2025-12-15T21:06:33.114+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 16.0°C
+[2025-12-15T21:06:33.115+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 3.1°C
+[2025-12-15T21:06:33.116+0000] {logging_mixin.py:190} INFO - ✓ Qom: 7.6°C
+[2025-12-15T21:06:33.119+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 18.0°C
+[2025-12-15T21:06:33.183+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 19.1°C
+[2025-12-15T21:06:33.184+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T21:06:33.469+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: 0.7°C
+[2025-12-15T21:06:33.470+0000] {logging_mixin.py:190} INFO - ✓ Suez: 16.8°C
+[2025-12-15T21:06:33.471+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 6.5°C
+[2025-12-15T21:06:33.474+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 14.1°C
+[2025-12-15T21:06:33.479+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 27/27 (100.0%)
+[2025-12-15T21:06:33.481+0000] {logging_mixin.py:190} INFO - ❌ Failed: 0/27
+[2025-12-15T21:06:33.482+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:06:33.516+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T21:06:33.539+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T21:06:33.541+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T210627, end_date=20251215T210633
+[2025-12-15T21:06:33.572+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T21:06:33.619+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T21:06:33.621+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T21:57:08.199+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T21:57:08.246+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T21:57:08.262+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T21:57:08.263+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T21:57:08.284+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T21:57:08.295+0000] {standard_task_runner.py:72} INFO - Started process 293 to run task
+[2025-12-15T21:57:08.302+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '107', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpyj943x1d']
+[2025-12-15T21:57:08.308+0000] {standard_task_runner.py:105} INFO - Job 107: Subtask weather_api
+[2025-12-15T21:57:08.355+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T21:57:08.420+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host b89d32282382
+[2025-12-15T21:57:08.422+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T21:57:08.534+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T21:57:08.536+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T21:57:08.557+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:57:08.558+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T21:57:08.559+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:57:08.782+0000] {logging_mixin.py:190} INFO - 📍 Cities: 27 | Workers: 10
+[2025-12-15T21:57:08.929+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 16.6°C
+[2025-12-15T21:57:08.935+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 11.3°C
+[2025-12-15T21:57:08.934+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 3.0°C
+[2025-12-15T21:57:08.941+0000] {logging_mixin.py:190} INFO - ✓ Adana: 9.0°C
+[2025-12-15T21:57:08.941+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 15.4°C
+[2025-12-15T21:57:09.064+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 17.0°C
+[2025-12-15T21:57:09.072+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 13.2°C
+[2025-12-15T21:57:09.076+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 5.1°C
+[2025-12-15T21:57:09.085+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 7.4°C
+[2025-12-15T21:57:09.091+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 2.8°C
+[2025-12-15T21:57:09.199+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 10.4°C
+[2025-12-15T21:57:09.206+0000] {logging_mixin.py:190} INFO - ✓ Konya: 0.7°C
+[2025-12-15T21:57:09.212+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 18.0°C
+[2025-12-15T21:57:09.220+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 3.1°C
+[2025-12-15T21:57:09.226+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 15.0°C
+[2025-12-15T21:57:09.331+0000] {logging_mixin.py:190} INFO - ✓ Qom: 7.5°C
+[2025-12-15T21:57:09.339+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 19.1°C
+[2025-12-15T21:57:09.346+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T21:57:09.353+0000] {logging_mixin.py:190} INFO - ✓ Suez: 15.1°C
+[2025-12-15T21:57:09.359+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: 0.7°C
+[2025-12-15T21:57:09.466+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 6.5°C
+[2025-12-15T21:57:09.471+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 14.1°C
+[2025-12-15T21:57:09.936+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 0.5°C
+[2025-12-15T21:57:09.937+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 17.0°C
+[2025-12-15T21:57:09.943+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 12.9°C
+[2025-12-15T21:57:09.944+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.6°C
+[2025-12-15T21:57:10.998+0000] {logging_mixin.py:190} INFO - ✓ Giza: 15.4°C
+[2025-12-15T21:57:11.000+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 27/27 (100.0%)
+[2025-12-15T21:57:11.001+0000] {logging_mixin.py:190} INFO - ❌ Failed: 0/27
+[2025-12-15T21:57:11.003+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T21:57:11.026+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T21:57:11.044+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T21:57:11.045+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T215708, end_date=20251215T215711
+[2025-12-15T21:57:11.088+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T21:57:11.124+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T21:57:11.127+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T22:33:59.608+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T22:33:59.632+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T22:33:59.641+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-15T22:33:59.642+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T22:33:59.657+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-15T22:33:59.664+0000] {standard_task_runner.py:72} INFO - Started process 1215 to run task
+[2025-12-15T22:33:59.669+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpdsn08f1a']
+[2025-12-15T22:33:59.672+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask weather_api
+[2025-12-15T22:33:59.694+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:33:59.746+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 6f17979d182d
+[2025-12-15T22:33:59.748+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:33:59.858+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-15T22:33:59.860+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T22:33:59.884+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:33:59.886+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-15T22:33:59.887+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:34:00.403+0000] {logging_mixin.py:190} INFO - 📍 Cities: 66 | Workers: 10
+[2025-12-15T22:34:02.590+0000] {logging_mixin.py:190} INFO - ✓ Alexandria: 17.0°C
+[2025-12-15T22:34:02.608+0000] {logging_mixin.py:190} INFO - ✓ Antalya: 11.3°C
+[2025-12-15T22:34:02.613+0000] {logging_mixin.py:190} INFO - ✓ Amman: 10.1°C
+[2025-12-15T22:34:02.614+0000] {logging_mixin.py:190} INFO - ✓ Ankara: 2.9°C
+[2025-12-15T22:34:02.621+0000] {logging_mixin.py:190} INFO - ✓ Aden: 24.5°C
+[2025-12-15T22:34:02.630+0000] {logging_mixin.py:190} INFO - ✓ Aleppo: 7.0°C
+[2025-12-15T22:34:02.631+0000] {logging_mixin.py:190} INFO - ✓ Adana: 10.0°C
+[2025-12-15T22:34:02.748+0000] {logging_mixin.py:190} INFO - ✓ Aswan: 15.6°C
+[2025-12-15T22:34:02.767+0000] {logging_mixin.py:190} INFO - ✓ Baghdad: 8.9°C
+[2025-12-15T22:34:02.787+0000] {logging_mixin.py:190} INFO - ✓ Buraydah: 12.2°C
+[2025-12-15T22:34:02.787+0000] {logging_mixin.py:190} INFO - ✓ Damascus: 8.4°C
+[2025-12-15T22:34:02.788+0000] {logging_mixin.py:190} INFO - ✓ Beirut: 12.4°C
+[2025-12-15T22:34:02.794+0000] {logging_mixin.py:190} INFO - ✓ Cairo: 15.4°C
+[2025-12-15T22:34:02.805+0000] {logging_mixin.py:190} INFO - ✓ Basra: 7.7°C
+[2025-12-15T22:34:02.918+0000] {logging_mixin.py:190} INFO - ✓ Dammam: 17.1°C
+[2025-12-15T22:34:02.926+0000] {logging_mixin.py:190} INFO - ✓ Doha: 24.0°C
+[2025-12-15T22:34:02.939+0000] {logging_mixin.py:190} INFO - ✓ Dubai: 24.0°C
+[2025-12-15T22:34:02.951+0000] {logging_mixin.py:190} INFO - ✓ Erbil: 5.9°C
+[2025-12-15T22:34:02.952+0000] {logging_mixin.py:190} INFO - ✓ East Jerusalem: 10.6°C
+[2025-12-15T22:34:02.964+0000] {logging_mixin.py:190} INFO - ✓ Gaziantep: 3.0°C
+[2025-12-15T22:34:02.964+0000] {logging_mixin.py:190} INFO - ✓ Gaza: 15.6°C
+[2025-12-15T22:34:03.087+0000] {logging_mixin.py:190} INFO - ✓ Giza: 15.4°C
+[2025-12-15T22:34:03.090+0000] {logging_mixin.py:190} INFO - ✓ Haifa: 12.9°C
+[2025-12-15T22:34:03.093+0000] {logging_mixin.py:190} INFO - ✓ Hebron: 9.4°C
+[2025-12-15T22:34:03.109+0000] {logging_mixin.py:190} INFO - ✓ Homs: 8.8°C
+[2025-12-15T22:34:03.116+0000] {logging_mixin.py:190} INFO - ✓ Isfahan: 2.8°C
+[2025-12-15T22:34:03.119+0000] {logging_mixin.py:190} INFO - ✓ Hurghada: 17.0°C
+[2025-12-15T22:34:03.128+0000] {logging_mixin.py:190} INFO - ✓ Irbid: 8.3°C
+[2025-12-15T22:34:03.245+0000] {logging_mixin.py:190} INFO - ✓ Istanbul: 5.1°C
+[2025-12-15T22:34:03.248+0000] {logging_mixin.py:190} INFO - ✓ Ismailia: 13.0°C
+[2025-12-15T22:34:03.250+0000] {logging_mixin.py:190} INFO - ✓ Izmir: 6.3°C
+[2025-12-15T22:34:03.262+0000] {logging_mixin.py:190} INFO - ✓ Jeddah: 21.9°C
+[2025-12-15T22:34:03.276+0000] {logging_mixin.py:190} INFO - ✓ Jerusalem: 10.4°C
+[2025-12-15T22:34:03.278+0000] {logging_mixin.py:190} INFO - ✓ Khobar: 17.1°C
+[2025-12-15T22:34:03.285+0000] {logging_mixin.py:190} INFO - ✓ Konya: 0.7°C
+[2025-12-15T22:34:03.405+0000] {logging_mixin.py:190} INFO - ✓ Kuwait City: 13.8°C
+[2025-12-15T22:34:03.409+0000] {logging_mixin.py:190} INFO - ✓ Latakia: 14.4°C
+[2025-12-15T22:34:03.418+0000] {logging_mixin.py:190} INFO - ✓ Luxor: 17.0°C
+[2025-12-15T22:34:03.429+0000] {logging_mixin.py:190} INFO - ✓ Manama: 20.0°C
+[2025-12-15T22:34:03.432+0000] {logging_mixin.py:190} INFO - ✓ Mecca: 21.0°C
+[2025-12-15T22:34:03.452+0000] {logging_mixin.py:190} INFO - ✓ Medina: 15.2°C
+[2025-12-15T22:34:03.453+0000] {logging_mixin.py:190} INFO - ✓ Mashhad: 3.1°C
+[2025-12-15T22:34:03.568+0000] {logging_mixin.py:190} INFO - ✓ Mosul: 8.7°C
+[2025-12-15T22:34:03.568+0000] {logging_mixin.py:190} INFO - ✓ Muscat: 21.3°C
+[2025-12-15T22:34:03.575+0000] {logging_mixin.py:190} INFO - ✓ Nablus: 11.0°C
+[2025-12-15T22:34:03.586+0000] {logging_mixin.py:190} INFO - ✓ Port Said: 15.0°C
+[2025-12-15T22:34:03.590+0000] {logging_mixin.py:190} INFO - ✓ Najaf: 7.9°C
+[2025-12-15T22:34:03.610+0000] {logging_mixin.py:190} INFO - ✓ Qom: 7.0°C
+[2025-12-15T22:34:03.612+0000] {logging_mixin.py:190} INFO - ✓ Abha: 12.1°C
+[2025-12-15T22:34:03.615+0000] {logging_mixin.py:190} INFO - ✓ Al Ain: 21.8°C
+[2025-12-15T22:34:03.624+0000] {logging_mixin.py:190} INFO - ✓ Abu Dhabi: 23.0°C
+[2025-12-15T22:34:03.625+0000] {logging_mixin.py:190} INFO - ✓ Riyadh: 12.9°C
+[2025-12-15T22:34:03.724+0000] {logging_mixin.py:190} INFO - ✓ Salalah: 24.1°C
+[2025-12-15T22:34:03.737+0000] {logging_mixin.py:190} INFO - ✓ Sanaa: 12.4°C
+[2025-12-15T22:34:03.744+0000] {logging_mixin.py:190} INFO - ✓ Sharjah: 21.2°C
+[2025-12-15T22:34:03.746+0000] {logging_mixin.py:190} INFO - ✓ Sharm El Sheikh: 19.2°C
+[2025-12-15T22:34:03.747+0000] {logging_mixin.py:190} INFO - ✓ Shiraz: 4.7°C
+[2025-12-15T22:34:03.772+0000] {logging_mixin.py:190} INFO - ✓ Suez: 14.3°C
+[2025-12-15T22:34:03.778+0000] {logging_mixin.py:190} INFO - ✓ Tabriz: 0.7°C
+[2025-12-15T22:34:03.780+0000] {logging_mixin.py:190} INFO - ✓ Tabuk: 22.6°C
+[2025-12-15T22:34:03.794+0000] {logging_mixin.py:190} INFO - ❌ Taiz: 404 Client Error: Not Found for url: htt, retrying in 5s...
+[2025-12-15T22:34:03.801+0000] {logging_mixin.py:190} INFO - ✓ Taif: 10.6°C
+[2025-12-15T22:34:03.877+0000] {logging_mixin.py:190} INFO - ✓ Tehran: 5.4°C
+[2025-12-15T22:34:03.894+0000] {logging_mixin.py:190} INFO - ✓ Tel Aviv: 14.1°C
+[2025-12-15T22:34:03.907+0000] {logging_mixin.py:190} INFO - ✓ Zarqa: 10.9°C
+[2025-12-15T22:34:03.924+0000] {logging_mixin.py:190} INFO - ❌ Tripoli_LB: 404 Client Error: Not Found for url: htt, retrying in 5s...
+[2025-12-15T22:34:08.954+0000] {logging_mixin.py:190} INFO - 💔 Taiz: Failed after 2 attempts
+[2025-12-15T22:34:09.084+0000] {logging_mixin.py:190} INFO - 💔 Tripoli_LB: Failed after 2 attempts
+[2025-12-15T22:34:09.087+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 64/66 (97.0%)
+[2025-12-15T22:34:09.088+0000] {logging_mixin.py:190} INFO - ❌ Failed: 2/66
+[2025-12-15T22:34:09.089+0000] {logging_mixin.py:190} INFO - Failed cities: Taiz, Tripoli_LB
+[2025-12-15T22:34:09.091+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:34:09.117+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T22:34:09.137+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T22:34:09.139+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251215T223359, end_date=20251215T223409
+[2025-12-15T22:34:09.187+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T22:34:09.224+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T22:34:09.228+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-16T14:41:03.805+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T14:41:03.831+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-16T14:41:03.840+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [queued]>
+[2025-12-16T14:41:03.841+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-16T14:41:03.853+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): weather_api> on 2025-12-14 18:05:00+00:00
+[2025-12-16T14:41:03.861+0000] {standard_task_runner.py:72} INFO - Started process 15676 to run task
+[2025-12-16T14:41:03.867+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'weather_api', 'scheduled__2025-12-14T18:05:00+00:00', '--job-id', '139', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmp6iqojy31']
+[2025-12-16T14:41:03.871+0000] {standard_task_runner.py:105} INFO - Job 139: Subtask weather_api
+[2025-12-16T14:41:03.895+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T14:41:03.960+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.weather_api scheduled__2025-12-14T18:05:00+00:00 [running]> on host 15d037495a80
+[2025-12-16T14:41:03.962+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T14:41:04.095+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='weather_api' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:05:00+00:00'
+[2025-12-16T14:41:04.097+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T14:41:04.130+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T14:41:04.132+0000] {logging_mixin.py:190} INFO -                     DAY 2: FETCHING WEATHER DATA
+[2025-12-16T14:41:04.133+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T14:41:04.981+0000] {logging_mixin.py:190} INFO - 📍 Cities: 66 | Workers: 10
+[2025-12-16T14:41:12.314+0000] {logging_mixin.py:190} INFO - 
+✅ Success: 64/66 (97.0%)
+[2025-12-16T14:41:12.316+0000] {logging_mixin.py:190} INFO - ❌ Failed: 2/66
+[2025-12-16T14:41:12.317+0000] {logging_mixin.py:190} INFO - Failed cities: Taiz, Tripoli_LB
+[2025-12-16T14:41:12.318+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T14:41:12.343+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T14:41:12.359+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T14:41:12.361+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=weather_api, run_id=scheduled__2025-12-14T18:05:00+00:00, execution_date=20251214T180500, start_date=20251216T144103, end_date=20251216T144112
+[2025-12-16T14:41:12.411+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T14:41:12.445+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T14:41:12.448+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,349 @@
+# Production-Ready Docker Compose for Weather Prediction Pipeline
+# Version: 2.0
+# Updated: December 2025
+
+version: '3.8'
+
+# =========================================
+# NETWORKS
+# =========================================
+networks:
+  airflow-network:
+    driver: bridge
+
+# =========================================
+# VOLUMES
+# =========================================
+volumes:
+  postgres-db-volume:
+    driver: local
+  airflow-logs:
+    driver: local
+  models-volume:
+    driver: local
+
+# =========================================
+# COMMON CONFIGURATIONS
+# =========================================
+x-airflow-common:
+  &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      AIRFLOW_VERSION: "2.10.2"
+      PYTHON_VERSION: "3.10"
+  image: weather-airflow:2.10.2
+  environment:
+    &airflow-common-env
+    # Core Settings
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: 'UTC'
+    AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: 1
+    
+    # Webserver Settings
+    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+    # AIRFLOW__WEBSERVER__RBAC: 'false'
+    AIRFLOW__WEBSERVER__WEB_SERVER_WORKER_TIMEOUT: 300
+    # AIRFLOW__WEBSERVER__AUTHENTICATE: 'false'
+    # AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.default'
+
+    # ================= AUTH / RBAC (FIX) =================
+    AIRFLOW__WEBSERVER__RBAC: 'true'
+    AIRFLOW__WEBSERVER__AUTHENTICATE: 'true'
+
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+
+    # REQUIRED
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'change-this-secret-key-123456'
+
+  #==========================================
+
+    
+    # Scheduler Settings
+    AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC: 5
+    AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 30
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 60
+    AIRFLOW__SCHEDULER__PARSING_PROCESSES: 2
+    AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT: 'false'
+    
+    # Logging
+    AIRFLOW__LOGGING__LOGGING_LEVEL: 'INFO'
+    AIRFLOW__LOGGING__FAB_LOGGING_LEVEL: 'WARNING'
+    AIRFLOW__LOGGING__COLORED_CONSOLE_LOG: 'false'
+    
+    # Performance
+    AIRFLOW__CORE__PARALLELISM: 32
+    AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG: 16
+    AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 90
+    
+    # Database
+    AIRFLOW__DATABASE__LOAD_DEFAULT_CONNECTIONS: 'false'
+    AIRFLOW__DATABASE__SQL_ALCHEMY_POOL_SIZE: 10
+    AIRFLOW__DATABASE__SQL_ALCHEMY_MAX_OVERFLOW: 20
+    
+    # Email (Optional - Configure if needed)
+    # AIRFLOW__SMTP__SMTP_HOST: 'smtp.gmail.com'
+    # AIRFLOW__SMTP__SMTP_PORT: 587
+    # AIRFLOW__SMTP__SMTP_USER: 'your-email@gmail.com'
+    # AIRFLOW__SMTP__SMTP_PASSWORD: 'your-app-password'
+    # AIRFLOW__SMTP__SMTP_MAIL_FROM: 'airflow@yourdomain.com'
+
+  volumes:
+    - ./dags:/opt/airflow/dags:rw
+    - ./logs:/opt/airflow/logs:rw
+    - ./plugins:/opt/airflow/plugins:rw
+    - ./config:/opt/airflow/config:rw
+    - models-volume:/opt/airflow/models:rw
+    - ./dags/aiii_model:/opt/airflow/dags/aiii_model:rw
+  
+  user: "${AIRFLOW_UID:-50000}:0"
+  
+  depends_on:
+    postgres:
+      condition: service_healthy
+  
+  networks:
+    - airflow-network
+  
+  restart: unless-stopped
+
+# =========================================
+# SERVICES
+# =========================================
+services:
+
+  # -----------------------------------------
+  # PostgreSQL Database
+  # -----------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: weather-postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # Performance tuning
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data/pgdata
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    command: >
+      postgres
+        -c max_connections=200
+        -c shared_buffers=256MB
+        -c effective_cache_size=1GB
+        -c maintenance_work_mem=64MB
+        -c checkpoint_completion_target=0.9
+        -c wal_buffers=16MB
+        -c default_statistics_target=100
+        -c random_page_cost=1.1
+        -c effective_io_concurrency=200
+        -c work_mem=2621kB
+        -c min_wal_size=1GB
+        -c max_wal_size=4GB
+    networks:
+      - airflow-network
+    restart: unless-stopped
+
+  # -----------------------------------------
+  # Airflow Database Init
+  # -----------------------------------------
+  airflow-init:
+    <<: *airflow-common
+    container_name: weather-airflow-init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        echo "=================================================="
+        echo "Initializing Airflow Database..."
+        echo "=================================================="
+        
+        # Wait for postgres
+        echo "Waiting for PostgreSQL..."
+        while ! pg_isready -h postgres -U airflow; do
+          echo "PostgreSQL not ready - sleeping 2s"
+          sleep 2
+        done
+        echo "✓ PostgreSQL is ready!"
+        
+        # Initialize database
+        echo "Running airflow db upgrade..."
+        airflow db migrate || airflow db upgrade
+        
+        # Create admin user (idempotent)
+        echo "Creating admin user..."
+        airflow users create \
+          --username admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@example.com \
+          --password admin 2>/dev/null || echo "Admin user already exists"
+        
+        # Create connection for ml_con
+        echo "Creating database connection..."
+        airflow connections create-default-connections || true
+        airflow connections delete ml_con 2>/dev/null || true
+        airflow connections add ml_con \
+          --conn-type postgres \
+          --conn-host postgres \
+          --conn-login airflow \
+          --conn-password airflow \
+          --conn-port 5432 \
+          --conn-schema airflow || echo "Connection ml_con already exists"
+        
+        echo "=================================================="
+        echo "✓ Airflow initialization complete!"
+        echo "=================================================="
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: 'admin'
+      _AIRFLOW_WWW_USER_PASSWORD: 'admin'
+    restart: "no"
+
+  # -----------------------------------------
+  # Airflow Webserver
+  # -----------------------------------------
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: weather-airflow-webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-common-env
+
+  # -----------------------------------------
+  # Airflow Scheduler
+  # -----------------------------------------
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: weather-airflow-scheduler
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "airflow", "jobs", "check", "--job-type", "SchedulerJob", "--hostname", "$${HOSTNAME}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-common-env
+
+  # -----------------------------------------
+  # Airflow Triggerer (for deferrable operators)
+  # -----------------------------------------
+  airflow-triggerer:
+    <<: *airflow-common
+    container_name: weather-airflow-triggerer
+    command: triggerer
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-common-env
+
+  # -----------------------------------------
+  # Airflow CLI (for maintenance)
+  # -----------------------------------------
+  airflow-cli:
+    <<: *airflow-common
+    container_name: weather-airflow-cli
+    profiles:
+      - debug
+    environment:
+      <<: *airflow-common-env
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    command:
+      - bash
+      - -c
+      - airflow
+
+  # -----------------------------------------
+  # Streamlit Dashboard
+  # -----------------------------------------
+  streamlit:
+    <<: *airflow-common
+    container_name: weather-streamlit
+    entrypoint: []
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        pip install streamlit plotly 2>/dev/null || true
+        streamlit run /opt/airflow/dags/dashboard.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8501/_stcore/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      <<: *airflow-common-env
+    networks:
+      - airflow-network
+    restart: unless-stopped
+
+# =========================================
+# OPTIONAL: Monitoring with Prometheus
+# =========================================
+  # Uncomment if you want monitoring
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   container_name: weather-prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   networks:
+  #     - airflow-network
+  #   restart: unless-stopped
+  
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   container_name: weather-grafana
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     GF_SECURITY_ADMIN_PASSWORD: admin
+  #   networks:
+  #     - airflow-network
+  #   restart: unless-stopped

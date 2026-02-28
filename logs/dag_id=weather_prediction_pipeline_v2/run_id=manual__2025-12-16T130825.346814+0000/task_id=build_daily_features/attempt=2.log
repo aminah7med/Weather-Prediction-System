@@ -1,0 +1,25 @@
+[2025-12-16T13:12:35.492+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T13:12:35.516+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.build_daily_features manual__2025-12-16T13:08:25.346814+00:00 [queued]>
+[2025-12-16T13:12:35.526+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.build_daily_features manual__2025-12-16T13:08:25.346814+00:00 [queued]>
+[2025-12-16T13:12:35.527+0000] {taskinstance.py:2865} INFO - Starting attempt 2 of 4
+[2025-12-16T13:12:35.541+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): build_daily_features> on 2025-12-16 13:08:25.346814+00:00
+[2025-12-16T13:12:35.548+0000] {standard_task_runner.py:72} INFO - Started process 10072 to run task
+[2025-12-16T13:12:35.553+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'build_daily_features', 'manual__2025-12-16T13:08:25.346814+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpcknytx99']
+[2025-12-16T13:12:35.557+0000] {standard_task_runner.py:105} INFO - Job 101: Subtask build_daily_features
+[2025-12-16T13:12:35.580+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T13:12:35.635+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.build_daily_features manual__2025-12-16T13:08:25.346814+00:00 [running]> on host 15d037495a80
+[2025-12-16T13:12:35.756+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='build_daily_features' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T13:08:25.346814+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T13:08:25.346814+00:00'
+[2025-12-16T13:12:35.758+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T13:12:35.780+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:12:35.781+0000] {logging_mixin.py:190} INFO -                     DAY 2: BUILDING FEATURES
+[2025-12-16T13:12:35.782+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:12:35.804+0000] {logging_mixin.py:190} INFO - Today: 2025-12-16 | Predicting for: 2025-12-17
+[2025-12-16T13:12:35.819+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-16T13:12:35.858+0000] {logging_mixin.py:190} INFO - ✅ Features: 64 | Fallback: 0
+[2025-12-16T13:12:35.860+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:12:35.887+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T13:12:35.904+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T13:12:35.905+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=build_daily_features, run_id=manual__2025-12-16T13:08:25.346814+00:00, execution_date=20251216T130825, start_date=20251216T131235, end_date=20251216T131235
+[2025-12-16T13:12:35.927+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T13:12:35.957+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T13:12:35.960+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

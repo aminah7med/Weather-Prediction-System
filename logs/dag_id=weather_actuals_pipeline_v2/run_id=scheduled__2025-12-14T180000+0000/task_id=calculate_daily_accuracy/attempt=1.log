@@ -1,0 +1,75 @@
+[2025-12-15T20:27:10.149+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T20:27:10.180+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-15T20:27:10.191+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-15T20:27:10.192+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T20:27:10.205+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): calculate_daily_accuracy> on 2025-12-14 18:00:00+00:00
+[2025-12-15T20:27:10.216+0000] {standard_task_runner.py:72} INFO - Started process 17180 to run task
+[2025-12-15T20:27:10.221+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_actuals_pipeline_v2', 'calculate_daily_accuracy', 'scheduled__2025-12-14T18:00:00+00:00', '--job-id', '74', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpcckodlbz']
+[2025-12-15T20:27:10.227+0000] {standard_task_runner.py:105} INFO - Job 74: Subtask calculate_daily_accuracy
+[2025-12-15T20:27:10.256+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:27:10.332+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [running]> on host 89522446c9a4
+[2025-12-15T20:27:10.335+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T20:27:10.541+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_actuals_pipeline_v2' AIRFLOW_CTX_TASK_ID='calculate_daily_accuracy' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:00:00+00:00'
+[2025-12-15T20:27:10.543+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T20:27:10.592+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:27:10.594+0000] {logging_mixin.py:190} INFO -                     CALCULATING PREDICTION ACCURACY
+[2025-12-15T20:27:10.598+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T20:27:10.601+0000] {logging_mixin.py:190} INFO - 📅 Evaluating predictions for: 2025-12-15
+[2025-12-15T20:27:10.629+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-15T20:27:10.651+0000] {logging_mixin.py:190} INFO - ⚠️  No predictions found for today
+[2025-12-15T20:27:10.653+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T20:27:10.683+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T20:27:10.685+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_actuals_pipeline_v2, task_id=calculate_daily_accuracy, run_id=scheduled__2025-12-14T18:00:00+00:00, execution_date=20251214T180000, start_date=20251215T202710, end_date=20251215T202710
+[2025-12-15T20:27:10.757+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T20:27:10.804+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T20:27:10.808+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-15T22:36:45.061+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-15T22:36:45.086+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-15T22:36:45.096+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-15T22:36:45.097+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-15T22:36:45.110+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): calculate_daily_accuracy> on 2025-12-14 18:00:00+00:00
+[2025-12-15T22:36:45.117+0000] {standard_task_runner.py:72} INFO - Started process 1472 to run task
+[2025-12-15T22:36:45.122+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_actuals_pipeline_v2', 'calculate_daily_accuracy', 'scheduled__2025-12-14T18:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpeu2h_p5i']
+[2025-12-15T22:36:45.127+0000] {standard_task_runner.py:105} INFO - Job 17: Subtask calculate_daily_accuracy
+[2025-12-15T22:36:45.152+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:36:45.211+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [running]> on host 6f17979d182d
+[2025-12-15T22:36:45.213+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-15T22:36:45.331+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_actuals_pipeline_v2' AIRFLOW_CTX_TASK_ID='calculate_daily_accuracy' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:00:00+00:00'
+[2025-12-15T22:36:45.334+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-15T22:36:45.361+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:36:45.363+0000] {logging_mixin.py:190} INFO -                     CALCULATING PREDICTION ACCURACY
+[2025-12-15T22:36:45.364+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-15T22:36:45.365+0000] {logging_mixin.py:190} INFO - 📅 Evaluating predictions for: 2025-12-15
+[2025-12-15T22:36:45.382+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-15T22:36:45.393+0000] {logging_mixin.py:190} INFO - ⚠️  No predictions found for today
+[2025-12-15T22:36:45.395+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-15T22:36:45.413+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-15T22:36:45.414+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_actuals_pipeline_v2, task_id=calculate_daily_accuracy, run_id=scheduled__2025-12-14T18:00:00+00:00, execution_date=20251214T180000, start_date=20251215T223645, end_date=20251215T223645
+[2025-12-15T22:36:45.457+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-15T22:36:45.486+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-15T22:36:45.488+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-12-16T14:41:32.605+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T14:41:32.638+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-16T14:41:32.650+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [queued]>
+[2025-12-16T14:41:32.652+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-16T14:41:32.668+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): calculate_daily_accuracy> on 2025-12-14 18:00:00+00:00
+[2025-12-16T14:41:32.677+0000] {standard_task_runner.py:72} INFO - Started process 15795 to run task
+[2025-12-16T14:41:32.681+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_actuals_pipeline_v2', 'calculate_daily_accuracy', 'scheduled__2025-12-14T18:00:00+00:00', '--job-id', '144', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpfmpjf8wu']
+[2025-12-16T14:41:32.685+0000] {standard_task_runner.py:105} INFO - Job 144: Subtask calculate_daily_accuracy
+[2025-12-16T14:41:32.710+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T14:41:32.779+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_actuals_pipeline_v2.calculate_daily_accuracy scheduled__2025-12-14T18:00:00+00:00 [running]> on host 15d037495a80
+[2025-12-16T14:41:32.782+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:470 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T14:41:32.914+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_actuals_pipeline_v2' AIRFLOW_CTX_TASK_ID='calculate_daily_accuracy' AIRFLOW_CTX_EXECUTION_DATE='2025-12-14T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-14T18:00:00+00:00'
+[2025-12-16T14:41:32.916+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T14:41:32.942+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T14:41:32.943+0000] {logging_mixin.py:190} INFO -                     CALCULATING PREDICTION ACCURACY
+[2025-12-16T14:41:32.944+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T14:41:32.945+0000] {logging_mixin.py:190} INFO - 📅 Evaluating predictions for: 2025-12-16
+[2025-12-16T14:41:32.965+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-16T14:41:32.978+0000] {logging_mixin.py:190} INFO - ⚠️  No predictions found for today
+[2025-12-16T14:41:32.980+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T14:41:32.997+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T14:41:32.998+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_actuals_pipeline_v2, task_id=calculate_daily_accuracy, run_id=scheduled__2025-12-14T18:00:00+00:00, execution_date=20251214T180000, start_date=20251216T144132, end_date=20251216T144132
+[2025-12-16T14:41:33.017+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T14:41:33.044+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T14:41:33.047+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

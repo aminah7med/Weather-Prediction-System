@@ -1,0 +1,38 @@
+[2025-12-16T13:13:20.037+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T13:13:20.063+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [queued]>
+[2025-12-16T13:13:20.073+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [queued]>
+[2025-12-16T13:13:20.075+0000] {taskinstance.py:2865} INFO - Starting attempt 7 of 9
+[2025-12-16T13:13:20.087+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): store_daily_predictions> on 2025-12-15 23:38:56.425312+00:00
+[2025-12-16T13:13:20.094+0000] {standard_task_runner.py:72} INFO - Started process 10334 to run task
+[2025-12-16T13:13:20.098+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'store_daily_predictions', 'manual__2025-12-15T23:38:56.425312+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpz5y4erdx']
+[2025-12-16T13:13:20.101+0000] {standard_task_runner.py:105} INFO - Job 111: Subtask store_daily_predictions
+[2025-12-16T13:13:20.122+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T13:13:20.181+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [running]> on host 15d037495a80
+[2025-12-16T13:13:20.301+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='store_daily_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T23:38:56.425312+00:00' AIRFLOW_CTX_TRY_NUMBER='7' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T23:38:56.425312+00:00'
+[2025-12-16T13:13:20.303+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T13:13:20.325+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:13:20.326+0000] {logging_mixin.py:190} INFO -                     DAY 2: STORING PREDICTIONS (OPTIMIZED)
+[2025-12-16T13:13:20.327+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:13:20.351+0000] {logging_mixin.py:190} INFO - 💾 Storing 64 predictions...
+[2025-12-16T13:13:20.352+0000] {logging_mixin.py:190} INFO - 📅 Target date: 2025-12-17
+[2025-12-16T13:13:20.367+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-16T13:13:20.368+0000] {logging_mixin.py:190} INFO - 🔌 Connecting...
+[2025-12-16T13:13:20.378+0000] {logging_mixin.py:190} INFO - ✅ Connected!
+[2025-12-16T13:13:20.380+0000] {logging_mixin.py:190} INFO - 📋 Ensuring table exists...
+[2025-12-16T13:13:20.381+0000] {logging_mixin.py:190} INFO - ✅ Table ready
+[2025-12-16T13:13:20.383+0000] {logging_mixin.py:190} INFO - 🔍 Checking for existing records on 2025-12-17...
+[2025-12-16T13:13:20.385+0000] {logging_mixin.py:190} INFO - ⚠️  Found 64 existing records for 2025-12-17
+[2025-12-16T13:13:20.386+0000] {logging_mixin.py:190} INFO -    Cities: Latakia, Jerusalem, Giza, Buraydah, Isfahan, Salalah, Cairo, Tel Aviv, Sanaa, Gaza, Hurghada, Manama, Abu Dhabi, Muscat, Suez, Tabriz, Alexandria, Khobar, Damascus, Hebron, Qom, Taif, Mashhad, Konya, Homs, Basra, Irbid, Gaziantep, Dubai, Ismailia, Tehran, Mosul, Amman, Baghdad, Aleppo, Adana, Zarqa, Dammam, Kuwait City, Ankara, Sharm El Sheikh, Izmir, Istanbul, Erbil, Najaf, Antalya, Doha, Riyadh, Al Ain, Beirut, Mecca, Nablus, Sharjah, Haifa, Medina, Aswan, Port Said, Aden, Shiraz, East Jerusalem, Tabuk, Abha, Jeddah, Luxor
+[2025-12-16T13:13:20.387+0000] {logging_mixin.py:190} INFO - 🔄 Updating 64 existing records...
+[2025-12-16T13:13:20.396+0000] {logging_mixin.py:190} INFO - ✅ Updated 64 records
+[2025-12-16T13:13:20.399+0000] {logging_mixin.py:190} INFO - 
+🎉 Success! Total processed: 64 predictions
+[2025-12-16T13:13:20.400+0000] {logging_mixin.py:190} INFO -    - Updated: 64
+[2025-12-16T13:13:20.401+0000] {logging_mixin.py:190} INFO -    - Inserted: 0
+[2025-12-16T13:13:20.403+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T13:13:20.404+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T13:13:20.422+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T13:13:20.423+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=store_daily_predictions, run_id=manual__2025-12-15T23:38:56.425312+00:00, execution_date=20251215T233856, start_date=20251216T131320, end_date=20251216T131320
+[2025-12-16T13:13:20.472+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T13:13:20.498+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T13:13:20.501+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

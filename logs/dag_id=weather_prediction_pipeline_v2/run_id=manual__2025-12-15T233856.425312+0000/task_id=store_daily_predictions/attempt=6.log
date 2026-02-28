@@ -1,0 +1,32 @@
+[2025-12-16T10:22:42.019+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T10:22:42.043+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [queued]>
+[2025-12-16T10:22:42.052+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [queued]>
+[2025-12-16T10:22:42.054+0000] {taskinstance.py:2865} INFO - Starting attempt 6 of 8
+[2025-12-16T10:22:42.067+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): store_daily_predictions> on 2025-12-15 23:38:56.425312+00:00
+[2025-12-16T10:22:42.075+0000] {standard_task_runner.py:72} INFO - Started process 278 to run task
+[2025-12-16T10:22:42.079+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2', 'store_daily_predictions', 'manual__2025-12-15T23:38:56.425312+00:00', '--job-id', '70', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmpltyhxm50']
+[2025-12-16T10:22:42.083+0000] {standard_task_runner.py:105} INFO - Job 70: Subtask store_daily_predictions
+[2025-12-16T10:22:42.106+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T10:22:42.162+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2.store_daily_predictions manual__2025-12-15T23:38:56.425312+00:00 [running]> on host 15d037495a80
+[2025-12-16T10:22:42.281+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2' AIRFLOW_CTX_TASK_ID='store_daily_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T23:38:56.425312+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T23:38:56.425312+00:00'
+[2025-12-16T10:22:42.283+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T10:22:42.304+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T10:22:42.305+0000] {logging_mixin.py:190} INFO -                     DAY 2: STORING PREDICTIONS (OPTIMIZED)
+[2025-12-16T10:22:42.307+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T10:22:42.331+0000] {logging_mixin.py:190} INFO - 💾 Storing 64 predictions...
+[2025-12-16T10:22:42.332+0000] {logging_mixin.py:190} INFO - 📅 Target date: 2025-12-16
+[2025-12-16T10:22:42.347+0000] {base.py:84} INFO - Retrieving connection 'ml_con'
+[2025-12-16T10:22:42.348+0000] {logging_mixin.py:190} INFO - 🔌 Connecting...
+[2025-12-16T10:22:42.356+0000] {logging_mixin.py:190} INFO - ✅ Connected!
+[2025-12-16T10:22:42.358+0000] {logging_mixin.py:190} INFO - 📋 Ensuring table exists...
+[2025-12-16T10:22:42.359+0000] {logging_mixin.py:190} INFO - ✅ Table ready
+[2025-12-16T10:22:42.360+0000] {logging_mixin.py:190} INFO - 📦 Preparing data...
+[2025-12-16T10:22:42.361+0000] {logging_mixin.py:190} INFO - 🚀 Inserting...
+[2025-12-16T10:22:42.371+0000] {logging_mixin.py:190} INFO - ✅ Stored 64 predictions successfully!
+[2025-12-16T10:22:42.373+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T10:22:42.374+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T10:22:42.389+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T10:22:42.390+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2, task_id=store_daily_predictions, run_id=manual__2025-12-15T23:38:56.425312+00:00, execution_date=20251215T233856, start_date=20251216T102242, end_date=20251216T102242
+[2025-12-16T10:22:42.414+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T10:22:42.437+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T10:22:42.440+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

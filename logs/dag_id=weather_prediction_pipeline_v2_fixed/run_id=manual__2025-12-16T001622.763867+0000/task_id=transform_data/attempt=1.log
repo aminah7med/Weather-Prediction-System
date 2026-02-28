@@ -1,0 +1,26 @@
+[2025-12-16T00:16:38.612+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-12-16T00:16:38.664+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2_fixed.transform_data manual__2025-12-16T00:16:22.763867+00:00 [queued]>
+[2025-12-16T00:16:38.684+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_prediction_pipeline_v2_fixed.transform_data manual__2025-12-16T00:16:22.763867+00:00 [queued]>
+[2025-12-16T00:16:38.687+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-12-16T00:16:38.715+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): transform_data> on 2025-12-16 00:16:22.763867+00:00
+[2025-12-16T00:16:38.730+0000] {standard_task_runner.py:72} INFO - Started process 455 to run task
+[2025-12-16T00:16:38.739+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_prediction_pipeline_v2_fixed', 'transform_data', 'manual__2025-12-16T00:16:22.763867+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/test_etl.py', '--cfg-path', '/tmp/tmplf8uc0ck']
+[2025-12-16T00:16:38.746+0000] {standard_task_runner.py:105} INFO - Job 43: Subtask transform_data
+[2025-12-16T00:16:38.794+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:209 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-12-16T00:16:38.896+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_prediction_pipeline_v2_fixed.transform_data manual__2025-12-16T00:16:22.763867+00:00 [running]> on host a31b9bcf920a
+[2025-12-16T00:16:39.096+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed_sami' AIRFLOW_CTX_DAG_ID='weather_prediction_pipeline_v2_fixed' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T00:16:22.763867+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T00:16:22.763867+00:00'
+[2025-12-16T00:16:39.099+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-12-16T00:16:39.150+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T00:16:39.153+0000] {logging_mixin.py:190} INFO -                     DAY 1: ENHANCED FEATURE ENGINEERING
+[2025-12-16T00:16:39.155+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T00:16:40.245+0000] {logging_mixin.py:190} INFO - 📊 Input shape: (361614, 10)
+[2025-12-16T00:16:59.268+0000] {logging_mixin.py:190} INFO - ✅ Transformed shape: (361152, 34)
+[2025-12-16T00:16:59.270+0000] {logging_mixin.py:190} INFO - 📊 Features created: 34
+[2025-12-16T00:16:59.272+0000] {logging_mixin.py:190} INFO - 💾 Saved to: /opt/***/dags/aiii_model/transformed_data.csv
+[2025-12-16T00:16:59.274+0000] {logging_mixin.py:190} INFO - ======================================================================
+[2025-12-16T00:16:59.287+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-12-16T00:16:59.315+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-12-16T00:16:59.317+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_prediction_pipeline_v2_fixed, task_id=transform_data, run_id=manual__2025-12-16T00:16:22.763867+00:00, execution_date=20251216T001622, start_date=20251216T001638, end_date=20251216T001659
+[2025-12-16T00:16:59.391+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-12-16T00:16:59.438+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-16T00:16:59.443+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
